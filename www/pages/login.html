@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Entrar — ReciclaDin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta name="theme-color" content="#0b2418">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body class="login-page">
+  <main class="auth-shell login-layout">
+    <div class="login-background" aria-hidden="true">
+      <img class="is-visible" src="../assets/cidade-limpa.png" alt="">
+      <img alt="">
+    </div>
+    <section class="auth-visual" aria-hidden="true">
+      <p class="login-slogan">Juntos por<br>um futuro mais<br>sustentável! <span>♻</span></p>
+      <p class="login-intro"><strong>ReciclaDin</strong><br>Conectando pessoas,<br>reciclagem e um planeta melhor.</p>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-card login-card">
+        <a class="brand login-brand" href="../index.html" aria-label="ReciclaDin — início">
+          <span class="login-brand-icon" aria-hidden="true">♻</span>
+          <span>Recicla<span>Din</span><small>RECICLAGEM • SUSTENTABILIDADE • VALOR</small></span>
+        </a>
+
+        <div class="mode-tabs" aria-hidden="true">
+          <button id="mode-login" class="active" type="button">Entrar</button>
+          <button id="mode-signup" type="button">Criar conta</button>
+        </div>
+
+        <h1 id="auth-title">Bem-vindo de volta!</h1>
+        <p id="auth-subtitle" class="subtitle">Faça login para acessar sua conta</p>
+
+        <form id="auth-form">
+          <div class="form-group login-field">
+            <label class="sr-only" for="email">E-mail ou usuário</label>
+            <span class="field-icon" aria-hidden="true">✉</span>
+            <input id="email" class="input" type="email" required autocomplete="email" placeholder="E-mail ou usuário">
+          </div>
+          <div class="form-group login-field">
+            <label class="sr-only" for="password">Senha</label>
+            <span class="field-icon lock-icon" aria-hidden="true">▣</span>
+            <input id="password" class="input" type="password" required autocomplete="current-password" placeholder="Senha" aria-describedby="login-password-guidance">
+            <button type="button" class="input-action" id="toggle-password" aria-label="Mostrar ou ocultar senha">◉</button>
+          </div>
+          <div id="login-password-guidance" class="login-password-guidance">
+            <span>Para criar ou redefinir sua senha, use:</span>
+            <ul>
+              <li>8 caracteres ou mais</li>
+              <li>Letras maiúsculas e minúsculas</li>
+              <li>Pelo menos um número</li>
+              <li>Pelo menos um caractere especial</li>
+            </ul>
+          </div>
+          <ul id="password-requirements" class="password-requirements signup-only hidden" aria-label="Requisitos da senha">
+            <li data-password-rule="length">8 caracteres ou mais</li>
+            <li data-password-rule="uppercase">Letras maiúsculas</li>
+            <li data-password-rule="lowercase">Letras minúsculas</li>
+            <li data-password-rule="number">Pelo menos um número</li>
+            <li data-password-rule="special">Pelo menos um caractere especial</li>
+          </ul>
+
+          <div class="form-group signup-only hidden">
+            <label class="label" for="name">Nome completo</label>
+            <input id="name" class="input" autocomplete="name">
+          </div>
+          <div class="form-group signup-only hidden">
+            <label class="label" for="role">Perfil</label>
+            <select id="role" class="input">
+              <option value="partner">Parceiro</option>
+              <option value="buyer">Comprador</option>
+            </select>
+          </div>
+          <div class="form-group signup-only hidden">
+            <label class="label" for="confirm-password">Confirmar senha</label>
+            <input id="confirm-password" class="input" type="password" autocomplete="new-password">
+          </div>
+          <div class="row signup-only hidden">
+            <label class="check"><input id="terms-check" type="checkbox"> Aceito os Termos e a Política de Privacidade.</label>
+          </div>
+
+          <div class="row login-options">
+            <label class="check"><input type="checkbox"> Lembrar de mim</label>
+            <a id="recovery-link" class="link">Esqueceu sua senha?</a>
+          </div>
+          <button id="submit-auth" class="btn btn-primary login-submit" type="submit">
+            <span aria-hidden="true">♟</span> Entrar
+          </button>
+        </form>
+
+        <div class="login-secondary">
+          <div class="divider">ou</div>
+          <button class="btn btn-ghost google-button" id="google-login" type="button">
+            <span class="google-mark" aria-hidden="true">G</span> Entrar com Google
+          </button>
+          <p class="signup-prompt">Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+        </div>
+
+        <div class="login-roles login-secondary" aria-label="Perfis atendidos pelo ReciclaDin">
+          <div class="role-card"><span aria-hidden="true">♻</span><strong>Parceiro</strong><small>Coletas • Pesagens<br>Pontos Verdes</small></div>
+          <div class="role-card"><span aria-hidden="true">🛒</span><strong>Comprador</strong><small>Materiais • Pedidos<br>Fornecedores</small></div>
+          <div class="role-card"><span aria-hidden="true">⚙</span><strong>Administrativo</strong><small>Gestão • Relatórios<br>Operação</small></div>
+        </div>
+        <p class="footer-note login-security login-secondary">♧ Seus dados estão protegidos pelo Supabase <strong>⚡ supabase</strong></p>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="../js/auth.js"></script>
+  <script type="module" src="../js/google-auth.js"></script>
+  <script type="module" src="../js/login-background.js"></script>
+</body>
+</html>

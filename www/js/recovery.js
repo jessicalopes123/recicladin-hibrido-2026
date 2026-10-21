@@ -1,0 +1,3 @@
+import { supabase, isSupabaseConfigured } from './supabase.js';
+const form=document.getElementById('recovery-form'); const msg=document.getElementById('recovery-msg');
+form.addEventListener('submit',async e=>{e.preventDefault(); if(!isSupabaseConfigured()){msg.textContent='Configure a Publishable Key em js/supabase.js.';return;} const email=document.getElementById('email').value.trim(); const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:'http://127.0.0.1:5500/www/pages/nova-senha.html'}); msg.textContent=error?error.message:'Se o e-mail estiver cadastrado, enviaremos um link seguro para redefinir a senha.';});

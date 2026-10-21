@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ReciclaDin</string>
+    <string name="title_activity_main">ReciclaDin</string>
+    <string name="package_name">br.com.recicladin.app</string>
+    <string name="custom_url_scheme">br.com.recicladin.app</string>
+</resources>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cadastro — ReciclaDin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta name="theme-color" content="#16a34a">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body>
+  <div class="auth-shell">
+    <section class="auth-visual">
+      <div class="visual-content">
+        <div class="eyebrow">♻ Cadastro seguro</div>
+        <h1>Faça parte de uma rede que valoriza a reciclagem.</h1>
+        <p>Crie seu acesso e gerencie coletas, materiais, pontos e impacto.</p>
+      </div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-card">
+        <a class="brand" href="../index.html"><div class="brand-mark">♻</div>ReciclaDin</a>
+        <h2>Crie sua conta</h2>
+        <p class="subtitle">Cadastro protegido pelo Supabase Auth.</p>
+        <form id="auth-form">
+          <div class="form-group">
+            <label class="label" for="name">Nome completo</label>
+            <input id="name" class="input" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label class="label" for="email">E-mail</label>
+            <input id="email" class="input" type="email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="label" for="role">Perfil</label>
+            <select id="role" class="input">
+              <option value="partner">Parceiro</option>
+              <option value="buyer">Comprador</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="label" for="password">Senha</label>
+            <input id="password" class="input" type="password" required autocomplete="new-password" aria-describedby="password-requirements">
+            <ul id="password-requirements" class="password-requirements" aria-label="Requisitos da senha">
+              <li data-password-rule="length">8 caracteres ou mais</li>
+              <li data-password-rule="uppercase">Letras maiúsculas</li>
+              <li data-password-rule="lowercase">Letras minúsculas</li>
+              <li data-password-rule="number">Pelo menos um número</li>
+              <li data-password-rule="special">Pelo menos um caractere especial</li>
+            </ul>
+          </div>
+          <div class="form-group">
+            <label class="label" for="confirm-password">Confirmar senha</label>
+            <input id="confirm-password" class="input" type="password" required autocomplete="new-password">
+          </div>
+          <label class="check">
+            <input id="terms-check" type="checkbox" required>
+            Aceito os <a class="link" href="termos.html" target="_blank" rel="noopener">Termos</a> e a <a class="link" href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.
+          </label>
+          <button id="submit-auth" class="btn btn-primary" style="margin-top:18px">Criar conta</button>
+        </form>
+        <p class="footer-note">Já possui acesso? <a class="link" href="login.html">Entrar</a></p>
+      </div>
+    </section>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="../js/cadastro.js"></script>
+</body>
+</html>

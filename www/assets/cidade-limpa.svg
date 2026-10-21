@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#65b7f2"/>
+      <stop offset=".68" stop-color="#d9efff"/>
+      <stop offset="1" stop-color="#e5f3d8"/>
+    </linearGradient>
+    <linearGradient id="tower" x2="1" y2="1">
+      <stop stop-color="#c6e7f7"/>
+      <stop offset=".45" stop-color="#3989b9"/>
+      <stop offset="1" stop-color="#174a72"/>
+    </linearGradient>
+    <linearGradient id="walk" x2="0" y2="1">
+      <stop stop-color="#aebfbd"/>
+      <stop offset="1" stop-color="#e3e5d9"/>
+    </linearGradient>
+    <linearGradient id="binGreen" x2="0" y2="1">
+      <stop stop-color="#43b770"/>
+      <stop offset="1" stop-color="#157044"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <g fill="#fff" opacity=".48">
+    <path d="M250 170c25-38 78-41 108-8 30-12 63 9 65 39H228c-3-15 7-27 22-31z"/>
+    <path d="M1125 116c24-31 68-31 91-4 27-11 55 8 57 33h-171c-2-13 8-24 23-29z"/>
+  </g>
+  <g opacity=".92">
+    <path fill="#9fcde2" d="M45 390h150V900H45z"/>
+    <path fill="url(#tower)" d="M76 245h178v655H76z"/>
+    <path fill="#174b72" d="M76 245h178v36H76z"/>
+    <path fill="#c6e8f5" d="M260 420h116v480H260z"/>
+    <path fill="#357fa7" d="M278 300h135v600H278z"/>
+    <path fill="#193f5c" d="M278 300h135v28H278z"/>
+    <path fill="url(#tower)" d="M1208 188h242v712h-242z"/>
+    <path fill="#d1edf8" d="M1236 153h187v35h-187z"/>
+    <path fill="#194d70" d="M1208 188h242v25h-242z"/>
+    <path fill="#3280a8" d="M1020 352h145v548h-145z"/>
+    <path fill="#193f5c" d="M1020 352h145v24h-145z"/>
+    <path fill="#82b7d1" d="M1460 408h140v492h-140z"/>
+  </g>
+  <g fill="#d8f2fb" opacity=".88">
+    <path d="M96 302h18v38H96zm36 0h18v38h-18zm36 0h18v38h-18zm36 0h18v38h-18zM96 363h18v38H96zm36 0h18v38h-18zm36 0h18v38h-18zm36 0h18v38h-18zM96 424h18v38H96zm36 0h18v38h-18zm36 0h18v38h-18zm36 0h18v38h-18z"/>
+    <path d="M298 350h16v34h-16zm37 0h16v34h-16zm37 0h16v34h-16zM298 405h16v34h-16zm37 0h16v34h-16zm37 0h16v34h-16zM298 460h16v34h-16zm37 0h16v34h-16zm37 0h16v34h-16z"/>
+    <path d="M1240 244h22v40h-22zm48 0h22v40h-22zm48 0h22v40h-22zm48 0h22v40h-22zM1240 306h22v40h-22zm48 0h22v40h-22zm48 0h22v40h-22zm48 0h22v40h-22zM1240 368h22v40h-22zm48 0h22v40h-22zm48 0h22v40h-22zm48 0h22v40h-22z"/>
+    <path d="M1041 395h18v34h-18zm41 0h18v34h-18zm41 0h18v34h-18zM1041 450h18v34h-18zm41 0h18v34h-18zm41 0h18v34h-18z"/>
+  </g>
+  <path fill="#7dbf68" d="M0 545c190-81 325-54 500-7 198 53 326 34 509-13 211-54 404-37 591 38v337H0z"/>
+  <path fill="#397e49" d="M0 650c210-76 355-58 525-11 186 52 341 53 544-5 206-59 371-39 531 16v250H0z"/>
+  <path fill="url(#walk)" d="M0 900 460 602h688l452 298z"/>
+  <path fill="#d0d4c8" d="m460 602-78 298h35l151-298zm688 0 115 298h42l-157-298z" opacity=".72"/>
+  <path fill="#bdc7bd" d="m760 900 23-298h25l34 298z" opacity=".72"/>
+  <g fill="#315f3c">
+    <rect x="150" y="420" width="24" height="205"/><circle cx="163" cy="390" r="105" fill="#41985a"/><circle cx="95" cy="438" r="74" fill="#55aa63"/><circle cx="224" cy="445" r="78" fill="#34894e"/>
+    <rect x="1370" y="418" width="28" height="210"/><circle cx="1385" cy="377" r="116" fill="#41985a"/><circle cx="1317" cy="434" r="81" fill="#59ac64"/><circle cx="1457" cy="442" r="82" fill="#388d4e"/>
+    <rect x="38" y="500" width="19" height="142"/><circle cx="48" cy="477" r="73" fill="#55a45d"/>
+  </g>
+  <g fill="#eef7d7">
+    <circle cx="85" cy="786" r="10"/><circle cx="119" cy="821" r="8"/><circle cx="151" cy="782" r="11"/><circle cx="196" cy="834" r="9"/><circle cx="228" cy="785" r="8"/>
+    <circle cx="1330" cy="790" r="9"/><circle cx="1371" cy="829" r="10"/><circle cx="1435" cy="778" r="8"/><circle cx="1495" cy="827" r="11"/>
+  </g>
+  <g transform="translate(1090 610)">
+    <g>
+      <path fill="url(#binGreen)" d="M0 21h86l-7 180H8z"/><rect x="-5" y="12" width="96" height="15" rx="5" fill="#126b3d"/>
+      <text x="43" y="70" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">VIDRO</text>
+      <path d="M30 109h28m-14-15v30m-16-9 16 16 16-16" fill="none" stroke="#eaffef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(96 4)">
+      <path fill="#2479c1" d="M0 21h86l-7 180H8z"/><rect x="-5" y="12" width="96" height="15" rx="5" fill="#15588f"/>
+      <text x="43" y="70" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">PAPEL</text>
+      <path d="M30 109h28m-14-15v30m-16-9 16 16 16-16" fill="none" stroke="#eaf6ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(192 8)">
+      <path fill="#e3b324" d="M0 21h86l-7 180H8z"/><rect x="-5" y="12" width="96" height="15" rx="5" fill="#b28716"/>
+      <text x="43" y="70" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="700">PLÁSTICO</text>
+      <path d="M30 109h28m-14-15v30m-16-9 16 16 16-16" fill="none" stroke="#fff9dd" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(288 12)">
+      <path fill="#293840" d="M0 21h86l-7 180H8z"/><rect x="-5" y="12" width="96" height="15" rx="5" fill="#18242b"/>
+      <text x="43" y="70" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">METAL</text>
+      <path d="M30 109h28m-14-15v30m-16-9 16 16 16-16" fill="none" stroke="#e8f2f4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(384 16)">
+      <path fill="#855333" d="M0 21h86l-7 180H8z"/><rect x="-5" y="12" width="96" height="15" rx="5" fill="#694025"/>
+      <text x="43" y="70" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">ÓLEO</text>
+      <path d="M43 96c0 0-16 19-16 30a16 16 0 0 0 32 0c0-11-16-30-16-30z" fill="none" stroke="#fff1df" stroke-width="5"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "name": "ReciclaDin",
+  "short_name": "ReciclaDin",
+  "description": "Plataforma de gestão de reciclagem, coletas, pesagens, óleo e Pontos Verdes.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07110b",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": []
+}
