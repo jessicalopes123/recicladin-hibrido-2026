@@ -1,37 +1,11 @@
 import { supabase, isSupabaseConfigured } from './supabase.js';
+import { isRatingEmailConfigured, sendRatingEmail } from './rating-email.js';
 
 const state={session:null,profile:null,role:'partner',walletBalance:null,theme:localStorage.getItem('rd_theme')||'light'};
 const SUPPORT_WHATSAPP_NUMBER='5511947630273';
 const WIN_ANSI_SPECIALS={8364:128,8218:130,402:131,8222:132,8230:133,8224:134,8225:135,710:136,8240:137,352:138,8249:139,338:140,381:142,8216:145,8217:146,8220:147,8221:148,8226:149,8211:150,8212:151,732:152,8482:153,353:154,8250:155,339:156,382:158,376:159};
 const $=s=>document.querySelector(s); const $$=s=>document.querySelectorAll(s);
 function toast(msg,error=false){const t=$('#toast');t.textContent=msg;t.className='toast'+(error?' error':'');t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),3500)}
-function showRatingEmailFallback({rating,comment}){
- const notification=$('#toast');
- notification.textContent='O envio automático ainda não está ativo. Revise a avaliação no seu e-mail e toque em Enviar: ';
- notification.className='toast error';
- const link=document.createElement('a');
- const name=state.profile?.full_name||'Usuário';
- const email=state.session?.user?.email||'';
- const profile=state.role==='partner'?'Parceiro':'Comprador';
- const body=[
-  'Nova avaliação do aplicativo ReciclaDin',
-  '',
-  `Nome: ${name}`,
-  `E-mail: ${email}`,
-  `Perfil: ${profile}`,
-  `Nota: ${rating}/5`,
-  '',
-  'Comentário:',
-  comment||'(sem comentário)'
- ].join('\n');
- link.href=`mailto:recicladin01@gmail.com?subject=${encodeURIComponent(`Nova avaliação ReciclaDin (${rating}/5)`)}&body=${encodeURIComponent(body)}`;
- link.textContent='Abrir e-mail';
- link.rel='noopener noreferrer';
- notification.append(link);
- notification.classList.remove('hidden');
- clearTimeout(notification.hideTimeout);
- notification.hideTimeout=setTimeout(()=>notification.classList.add('hidden'),12000);
-}
 function pdfTextHex(text){
  return Array.from(text,char=>{
   const code=char.codePointAt(0);
@@ -473,26 +447,26 @@ function bind(){
   e.preventDefault();
   const rating=Number($('#rating-value').value);
   if(!Number.isInteger(rating)||rating<1||rating>5)return toast('Escolha uma nota de 1 a 5 estrelas.',true);
+  if(!isRatingEmailConfigured())return toast('Configure o EmailJS conforme o README_WEB.md para enviar avaliações.',true);
   const form=e.currentTarget;
   const submit=form.querySelector('button[type="submit"]');
   submit.disabled=true;
   submit.textContent='Enviando...';
   try{
-   const {error}=await supabase.functions.invoke('send-rating-email',{
-    body:{rating,comment:$('#rating-comment').value.trim()}
+   await sendRatingEmail({
+    name:state.profile?.full_name||'Usuário',
+    email:state.session?.user?.email||'',
+    profile:state.role==='partner'?'Parceiro':'Comprador',
+    rating,
+    comment:$('#rating-comment').value.trim()
    });
-   if(error)throw error;
    form.reset();
    $('#rating-value').value='0';
    $$('.star').forEach(star=>star.classList.remove('selected'));
    toast('Avaliação enviada. Obrigado!');
   }catch(error){
    console.error('Falha ao enviar avaliação:',error);
-   if(error?.context?.status===404){
-    showRatingEmailFallback({rating,comment:$('#rating-comment').value.trim()});
-    return;
-   }
-   toast('Não foi possível enviar sua avaliação. Tente novamente mais tarde.',true);
+   toast(error.message||'Não foi possível enviar sua avaliação. Tente novamente mais tarde.',true);
   }finally{
    submit.disabled=false;
    submit.textContent='Enviar avaliação';

@@ -36,12 +36,13 @@ Em Authentication, configure Email. Se quiser Google, configure o provider Googl
 Configure o SMTP/serviço de e-mail do projeto e as Redirect URLs para `pages/nova-senha.html` e `pages/app.html` no ambiente em que o sistema for publicado.
 
 ## 5. Notificações de avaliação por e-mail
-As avaliações de parceiros e compradores são enviadas ao endereço configurado em `RATING_NOTIFICATION_TO` pela Edge Function `send-rating-email`. Para habilitar o envio:
-1. Crie uma chave de API no Resend e verifique o domínio do remetente.
-2. Nos segredos das Edge Functions do projeto Supabase, configure `RESEND_API_KEY`, `RATING_NOTIFICATION_FROM` (por exemplo, `ReciclaDin <avaliacoes@seudominio.com>`) e `RATING_NOTIFICATION_TO` (e-mail da ReciclaDin).
-3. Entre na CLI do Supabase, vincule este projeto com `supabase link --project-ref <id-do-projeto>` e publique com `supabase functions deploy send-rating-email`.
+As avaliações são enviadas diretamente pelo navegador usando EmailJS, sem gravar a avaliação no Supabase:
+1. Crie uma conta no EmailJS, conecte o serviço de e-mail e crie um template.
+2. No template, defina o destinatário como `recicladin01@gmail.com`, o Reply-To como `{{email}}` e inclua `{{name}}`, `{{email}}`, `{{profile}}`, `{{rating}}` e `{{comment}}` no conteúdo.
+3. Restrinja os domínios autorizados nas configurações do EmailJS.
+4. Copie o Service ID, o Template ID e a Public Key para as constantes em `www/js/rating-email.js`.
 
-O nome, o e-mail e o perfil vêm da conta autenticada; senha e chaves secretas nunca são enviados ao navegador. Se a função ainda não estiver publicada, o formulário oferece preparar a avaliação no aplicativo de e-mail do usuário para envio manual.
+A Public Key do EmailJS foi feita para uso no cliente; nunca coloque chaves privadas no site. Enquanto os três identificadores não estiverem configurados, o formulário informa que o envio automático ainda não está pronto.
 
 ## 6. Abrir
 Execute `npm run web:prepare` para gerar o bundle do app e copiar a versão web para `dist/`. Sirva `dist/` (recomendado para a versão preparada) ou `www/` usando um servidor local; não abra diretamente por `file://`.

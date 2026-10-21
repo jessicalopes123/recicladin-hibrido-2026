@@ -1,2 +1,0 @@
-[functions.send-rating-email]
-verify_jwt = true
