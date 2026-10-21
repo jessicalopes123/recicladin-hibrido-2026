@@ -35,17 +35,25 @@ Em Authentication, configure Email. Se quiser Google, configure o provider Googl
 ## 4. E-mail de confirmação e recuperação
 Configure o SMTP/serviço de e-mail do projeto e as Redirect URLs para `pages/nova-senha.html` e `pages/app.html` no ambiente em que o sistema for publicado.
 
-## 5. Abrir
+## 5. Notificações de avaliação por e-mail
+As avaliações de parceiros e compradores são enviadas ao endereço configurado em `RATING_NOTIFICATION_TO` pela Edge Function `send-rating-email`. Para habilitar o envio:
+1. Crie uma chave de API no Resend e verifique o domínio do remetente.
+2. Nos segredos das Edge Functions do projeto Supabase, configure `RESEND_API_KEY`, `RATING_NOTIFICATION_FROM` (por exemplo, `ReciclaDin <avaliacoes@seudominio.com>`) e `RATING_NOTIFICATION_TO` (e-mail da ReciclaDin).
+3. Entre na CLI do Supabase, vincule este projeto com `supabase link --project-ref <id-do-projeto>` e publique com `supabase functions deploy send-rating-email`.
+
+O nome, o e-mail e o perfil vêm da conta autenticada; senha e chaves secretas nunca são enviados ao navegador. Sem a função publicada e os segredos configurados, o formulário informa que não foi possível enviar a avaliação.
+
+## 6. Abrir
 Execute `npm run web:prepare` para gerar o bundle do app e copiar a versão web para `dist/`. Sirva `dist/` (recomendado para a versão preparada) ou `www/` usando um servidor local; não abra diretamente por `file://`.
 
-## 6. Perfis
+## 7. Perfis
 - `partner` = Parceiro
 - `buyer` = Comprador
 - `admin` = Administrativo
 
 O papel deve ser controlado pelo banco/RLS. Em produção, não permita que um usuário comum altere seu próprio `role`.
 
-## 7. Fases 1 e 2 incluídas
+## 8. Fases 1 e 2 incluídas
 Fase 1: splash, acesso, cadastro, login, recuperação, senha no Supabase Auth, confirmação por e-mail e Google preparado.
 
 Fase 2: Minha Conta, edição de perfil, preferências de notificações, segurança, suporte/FAQ, avaliação, acessibilidade, tema claro/escuro, exclusão de conta e páginas de privacidade/termos.

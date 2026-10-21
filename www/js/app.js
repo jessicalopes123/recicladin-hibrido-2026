@@ -438,8 +438,35 @@ function bind(){
   link.click();
   toast('Conversa preparada no WhatsApp. Toque em Enviar para encaminhar a mensagem.');
  };
- $$('.star').forEach(s=>s.onclick=()=>{$$('.star').forEach(x=>x.classList.toggle('selected',x.dataset.value<=s.dataset.value));$('#rating-value').value=s.dataset.value});
- $('#rating-form').onsubmit=e=>{e.preventDefault();toast('Obrigado pela avaliação!')};
+ $$('.star').forEach(s=>s.onclick=()=>{
+  $$('.star').forEach(x=>x.classList.toggle('selected',x.dataset.value<=s.dataset.value));
+  $('#rating-value').value=s.dataset.value;
+ });
+ $('#rating-form').onsubmit=async e=>{
+  e.preventDefault();
+  const rating=Number($('#rating-value').value);
+  if(!Number.isInteger(rating)||rating<1||rating>5)return toast('Escolha uma nota de 1 a 5 estrelas.',true);
+  const form=e.currentTarget;
+  const submit=form.querySelector('button[type="submit"]');
+  submit.disabled=true;
+  submit.textContent='Enviando...';
+  try{
+   const {error}=await supabase.functions.invoke('send-rating-email',{
+    body:{rating,comment:$('#rating-comment').value.trim()}
+   });
+   if(error)throw error;
+   form.reset();
+   $('#rating-value').value='0';
+   $$('.star').forEach(star=>star.classList.remove('selected'));
+   toast('Avaliação enviada. Obrigado!');
+  }catch(error){
+   console.error('Falha ao enviar avaliação:',error);
+   toast('Não foi possível enviar sua avaliação. Tente novamente mais tarde.',true);
+  }finally{
+   submit.disabled=false;
+   submit.textContent='Enviar avaliação';
+  }
+ };
  $('#new-collection').onclick=()=>showSection('collections');
 }
 if(!isSupabaseConfigured()){toast('Configure a Publishable Key em js/supabase.js.',true)}
