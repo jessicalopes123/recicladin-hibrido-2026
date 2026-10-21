@@ -1,5 +1,5 @@
 const EMAILJS_SERVICE_ID = 'service_450hjua';
-const EMAILJS_TEMPLATE_ID = 'template_1mfvagh';
+const EMAILJS_TEMPLATE_ID = 'template_0c5t1me';
 const EMAILJS_PUBLIC_KEY = 'wkdcuRTtGom34U51P';
 
 export const isRatingEmailConfigured = () =>
