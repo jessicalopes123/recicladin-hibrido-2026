@@ -41,7 +41,7 @@ As avaliações de parceiros e compradores são enviadas ao endereço configurad
 2. Nos segredos das Edge Functions do projeto Supabase, configure `RESEND_API_KEY`, `RATING_NOTIFICATION_FROM` (por exemplo, `ReciclaDin <avaliacoes@seudominio.com>`) e `RATING_NOTIFICATION_TO` (e-mail da ReciclaDin).
 3. Entre na CLI do Supabase, vincule este projeto com `supabase link --project-ref <id-do-projeto>` e publique com `supabase functions deploy send-rating-email`.
 
-O nome, o e-mail e o perfil vêm da conta autenticada; senha e chaves secretas nunca são enviados ao navegador. Sem a função publicada e os segredos configurados, o formulário informa que não foi possível enviar a avaliação.
+O nome, o e-mail e o perfil vêm da conta autenticada; senha e chaves secretas nunca são enviados ao navegador. Se a função ainda não estiver publicada, o formulário oferece preparar a avaliação no aplicativo de e-mail do usuário para envio manual.
 
 ## 6. Abrir
 Execute `npm run web:prepare` para gerar o bundle do app e copiar a versão web para `dist/`. Sirva `dist/` (recomendado para a versão preparada) ou `www/` usando um servidor local; não abra diretamente por `file://`.
