@@ -1,6 +1,6 @@
-const EMAILJS_SERVICE_ID = 'COLE_SEU_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'COLE_SEU_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'COLE_SUA_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'service_450hjua';
+const EMAILJS_TEMPLATE_ID = 'template_0c5t1me';
+const EMAILJS_PUBLIC_KEY = 'wkdcuRTtGom34U51P';
 
 export const isRatingEmailConfigured = () =>
   ![EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY].some(value => value.startsWith('COLE_'));
