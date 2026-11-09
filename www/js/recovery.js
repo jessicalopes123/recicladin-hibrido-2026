@@ -1,3 +1,33 @@
 import { supabase, isSupabaseConfigured } from './supabase.js';
-const form=document.getElementById('recovery-form'); const msg=document.getElementById('recovery-msg');
-form.addEventListener('submit',async e=>{e.preventDefault(); if(!isSupabaseConfigured()){msg.textContent='Configure a Publishable Key em js/supabase.js.';return;} const email=document.getElementById('email').value.trim(); const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:'http://127.0.0.1:5500/www/pages/nova-senha.html'}); msg.textContent=error?error.message:'Se o e-mail estiver cadastrado, enviaremos um link seguro para redefinir a senha.';});
+
+const form = document.getElementById('recovery-form');
+const message = document.getElementById('recovery-msg');
+const submit = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  message.textContent = '';
+
+  if (!isSupabaseConfigured()) {
+    message.textContent = 'O serviço de recuperação de senha não está configurado.';
+    return;
+  }
+
+  const email = document.getElementById('email').value.trim();
+  const originalLabel = submit.textContent;
+  submit.disabled = true;
+  submit.textContent = 'Enviando link...';
+
+  try {
+    const redirectTo = new URL('nova-senha.html', window.location.href).href;
+    const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+    if (error) throw error;
+
+    message.textContent = 'Se o e-mail estiver cadastrado, enviaremos um link seguro para redefinir a senha.';
+  } catch (error) {
+    message.textContent = `Não foi possível enviar o link: ${error.message || error}`;
+  } finally {
+    submit.disabled = false;
+    submit.textContent = originalLabel;
+  }
+});

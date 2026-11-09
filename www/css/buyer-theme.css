@@ -1,0 +1,455 @@
+body[data-role="buyer"] {
+  --buyer-black: #000;
+  --buyer-panel: #080b08;
+  --buyer-panel-raised: #0e120e;
+  --buyer-border: #202820;
+  --buyer-green: #00ff00;
+  --buyer-muted: #a4afa4;
+  color: #fff;
+  background: var(--buyer-black);
+}
+
+body[data-role="buyer"] .app-shell,
+body[data-role="buyer"] .main,
+body[data-role="buyer"] .content {
+  background: var(--buyer-black);
+  color: #fff;
+}
+
+body[data-role="buyer"] .app-shell {
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+body[data-role="buyer"] .sidebar {
+  border-right: 1px solid var(--buyer-border);
+  background: #030503;
+  color: #fff;
+}
+
+body[data-role="buyer"] .sidebar .brand,
+body[data-role="buyer"] .sidebar .nav-item,
+body[data-role="buyer"] .sidebar .nav-item b,
+body[data-role="buyer"] .sidebar .dashboard-side-note {
+  color: #fff;
+}
+
+body[data-role="buyer"] .sidebar .nav-item.active,
+body[data-role="buyer"] .sidebar .nav-item:hover {
+  border: 1px solid #00ff0040;
+  background: #00ff0012;
+  color: var(--buyer-green);
+  box-shadow: inset 3px 0 var(--buyer-green), 0 0 18px #00ff0014;
+}
+
+body[data-role="buyer"] .sidebar .nav-item.active b,
+body[data-role="buyer"] .sidebar .nav-item:hover b {
+  color: var(--buyer-green);
+}
+
+body[data-role="buyer"] .topbar {
+  border-bottom-color: var(--buyer-border);
+  background: #050705;
+  color: #fff;
+}
+
+body[data-role="buyer"] .topbar .title,
+body[data-role="buyer"] .topbar strong {
+  color: #fff;
+}
+
+body[data-role="buyer"] .topbar .muted,
+body[data-role="buyer"] .muted {
+  color: var(--buyer-muted);
+}
+
+body[data-role="buyer"] .topbar .icon-btn,
+body[data-role="buyer"] .btn-ghost {
+  border: 1px solid var(--buyer-border);
+  background: var(--buyer-panel-raised);
+  color: #fff;
+}
+
+body[data-role="buyer"] .content {
+  max-width: 1600px;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) :is(h1, h2, h3, h4, p, strong, small, label, .metric, .metric-label) {
+  color: #fff;
+}
+
+body[data-role="buyer"] .section .card,
+body[data-role="buyer"] #section-dashboard .partner-dashboard-metrics > .card,
+body[data-role="buyer"] #section-dashboard .buyer-report-panel {
+  border: 1px solid var(--buyer-border);
+  background: var(--buyer-panel);
+  color: #fff;
+  box-shadow: 0 14px 38px #000a, 0 0 24px #00ff0008;
+}
+
+body[data-role="buyer"] #section-dashboard.active {
+  gap: 16px;
+}
+
+body[data-role="buyer"] #section-dashboard .partner-dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+body[data-role="buyer"] #section-dashboard .partner-dashboard-metrics > .card {
+  min-height: 150px;
+  border-radius: 22px;
+}
+
+body[data-role="buyer"] #section-dashboard .metric {
+  color: var(--buyer-green);
+  text-shadow: 0 0 18px #00ff0050;
+}
+
+body[data-role="buyer"] #section-dashboard .metric-icon {
+  border: 1px solid #00ff0033;
+  background: #00ff0012;
+  color: var(--buyer-green);
+  box-shadow: 0 0 20px #00ff0018;
+}
+
+body[data-role="buyer"] .admin-welcome.buyer-welcome {
+  display: flex;
+  min-height: 190px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  overflow: hidden;
+  padding: clamp(22px, 4vw, 40px);
+  border: 1px solid #00ff0040;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at 88% 20%, #00ff001a, transparent 42%), linear-gradient(135deg, #0b100b, #030503 70%);
+  box-shadow: 0 0 34px #00ff000d;
+}
+
+body[data-role="buyer"] .buyer-welcome .partner-section-kicker,
+body[data-role="buyer"] .buyer-report-kicker {
+  color: var(--buyer-green);
+}
+
+body[data-role="buyer"] .buyer-welcome h2 {
+  max-width: 620px;
+  color: #fff;
+}
+
+body[data-role="buyer"] .buyer-welcome p {
+  max-width: 620px;
+  color: #c4cec4;
+}
+
+body[data-role="buyer"] .buyer-welcome .admin-welcome-icon {
+  color: var(--buyer-green);
+  filter: drop-shadow(0 0 18px #00ff0070);
+}
+
+body[data-role="buyer"] .buyer-report-panel {
+  gap: 18px;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  border-radius: 22px;
+  background: radial-gradient(circle at 95% 0, #00ff0012, transparent 38%), #080b08;
+}
+
+body[data-role="buyer"] .buyer-order-card {
+  min-width: 0;
+  width: 100%;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-collections) :is(.buyer-report-heading h2, .buyer-order-chart-heading h3, .buyer-orders-heading h3) {
+  color: #fff;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-collections) :is(.buyer-report-heading p, .buyer-report-note, .buyer-order-chart-heading span) {
+  color: var(--buyer-muted);
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-collections) .buyer-report-export,
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .btn-green {
+  border: 1px solid #00ff00;
+  background: var(--buyer-green);
+  color: #001400;
+  box-shadow: 0 0 18px #00ff0040;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-collections) .buyer-report-export:hover,
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .btn-green:hover {
+  background: #7dff7d;
+  box-shadow: 0 0 26px #00ff0070;
+}
+
+body[data-role="buyer"] .buyer-report-metrics article,
+body[data-role="buyer"] .buyer-order-chart {
+  border-color: var(--buyer-border);
+  border-radius: 17px;
+  background: #030503;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-collections) .buyer-report-metrics article span {
+  color: var(--buyer-muted);
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-collections) .buyer-report-metrics article strong {
+  color: var(--buyer-green);
+  text-shadow: 0 0 14px #00ff0040;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .input {
+  border-color: #293229;
+  background: #030503;
+  color: #fff;
+  color-scheme: dark;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .input::placeholder {
+  color: #7d887d;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .input:focus {
+  border-color: var(--buyer-green);
+  background: #050805;
+  box-shadow: 0 0 0 3px #00ff0020, 0 0 18px #00ff0014;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .table th {
+  border-bottom-color: #263026;
+  color: #a9b5a9;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) .table td {
+  border-bottom-color: #1c241c;
+  color: #edf2ed;
+}
+
+body[data-role="buyer"] .section .pill {
+  border: 1px solid #00ff0033;
+  background: #00ff0012;
+  color: var(--buyer-green);
+}
+
+body[data-role="buyer"] .mobile-nav {
+  border-top: 1px solid var(--buyer-border);
+  background: #030503f5;
+  backdrop-filter: blur(16px);
+}
+
+body[data-role="buyer"] .mobile-nav button {
+  background: transparent;
+  color: #c5cec5;
+}
+
+body[data-role="buyer"] .mobile-nav button.active,
+body[data-role="buyer"] .mobile-nav button:hover {
+  background: #00ff0012;
+  color: var(--buyer-green);
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) :is(.btn:not(.btn-green), .icon-btn, .partner-panel-link, .partner-shortcut, .admin-quick-links button, .mobile-nav button) {
+  border-color: #00ff0040;
+  background: #090d09;
+  color: #fff;
+}
+
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) :is(.btn:not(.btn-green), .icon-btn, .partner-panel-link, .partner-shortcut, .admin-quick-links button, .mobile-nav button):hover,
+body[data-role="buyer"] :is(#section-dashboard, #section-materials, #section-collections, #section-history, #section-account, #section-support) :is(.mobile-nav button.active) {
+  background: #00ff0012;
+  color: var(--buyer-green);
+}
+
+body[data-role="buyer"] .modal-card {
+  border: 1px solid var(--buyer-border);
+  background: #080b08;
+  color: #fff;
+}
+
+body[data-role="buyer"] .toast {
+  border: 1px solid #00ff0040;
+  background: #080b08;
+  color: #fff;
+}
+
+@media (max-width: 820px) {
+  body[data-role="buyer"] .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-role="buyer"] .buyer-welcome {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  body[data-role="buyer"] #section-collections .buyer-order-card,
+  body[data-role="buyer"] #section-collections .buyer-report-panel {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  body[data-role="buyer"] #section-collections .buyer-report-panel {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px;
+  }
+
+  body[data-role="buyer"] .buyer-report-panel > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  body[data-role="buyer"] #section-dashboard .partner-dashboard-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  body[data-role="buyer"] #section-dashboard .partner-dashboard-metrics > .card {
+    min-height: 126px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  body[data-role="buyer"] .buyer-welcome .admin-welcome-icon {
+    display: none;
+  }
+
+  body[data-role="buyer"] .buyer-report-heading {
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  body[data-role="buyer"] .buyer-report-heading > div {
+    min-width: 0;
+  }
+
+  body[data-role="buyer"] .buyer-report-heading h2 {
+    overflow-wrap: anywhere;
+  }
+
+  body[data-role="buyer"] .buyer-report-export {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    flex: 0 1 auto;
+  }
+
+  body[data-role="buyer"] .buyer-report-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-role="buyer"] .buyer-report-filters > div {
+    min-width: 0;
+  }
+
+  body[data-role="buyer"] .buyer-report-filters .input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  body[data-role="buyer"] .buyer-report-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-role="buyer"] .buyer-order-chart-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  body[data-role="buyer"] .buyer-order-chart-heading span {
+    overflow-wrap: anywhere;
+  }
+
+  body[data-role="buyer"] .buyer-orders-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table-wrap {
+    overflow: visible;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table thead {
+    display: none;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody {
+    display: grid;
+    gap: 10px;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody tr {
+    display: grid;
+    min-width: 0;
+    padding: 8px 12px;
+    border: 1px solid var(--buyer-border);
+    border-radius: 14px;
+    background: var(--buyer-panel-raised);
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody td {
+    display: grid;
+    grid-template-columns: minmax(92px, 38%) minmax(0, 1fr);
+    gap: 8px;
+    min-width: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--buyer-border);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody td[data-label]::before {
+    content: attr(data-label);
+    color: var(--buyer-muted);
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody td:not([data-label]) {
+    display: block;
+    border-bottom: 0;
+    color: var(--buyer-muted);
+  }
+}
+
+@media (max-width: 380px) {
+  body[data-role="buyer"] #section-collections .buyer-report-panel {
+    padding: 12px;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody tr {
+    padding-inline: 9px;
+  }
+
+  body[data-role="buyer"] .buyer-orders-table tbody td {
+    grid-template-columns: minmax(80px, 36%) minmax(0, 1fr);
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-role="buyer"] *,
+  body[data-role="buyer"] *::before,
+  body[data-role="buyer"] *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

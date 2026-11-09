@@ -25,7 +25,10 @@ async function signInWithGoogle() {
     const redirectTo = new URL('app.html', window.location.href).href;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo }
+      options: {
+        redirectTo,
+        queryParams: { prompt: 'select_account' }
+      }
     });
 
     if (error) throw error;

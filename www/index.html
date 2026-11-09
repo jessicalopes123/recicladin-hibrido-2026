@@ -1,3 +1,37 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ReciclaDin</title><link rel="stylesheet" href="css/style.css">  <meta name="theme-color" content="#16a34a">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ReciclaDin</title>
+  <link rel="stylesheet" href="css/style.css?v=20261024-admin-v2">
+  <link rel="stylesheet" href="css/index.css?v=20261024-admin-v2">
+  <meta name="theme-color" content="#16a34a">
   <link rel="manifest" href="./manifest.webmanifest">
-</head><body><main class="splash"><div class="splash-inner"><div class="brand-mark">♻</div><h1 style="font:800 34px Manrope;margin:18px 0 5px">ReciclaDin</h1><p style="color:#bcd2c2">Reciclagem inteligente, impacto real.</p><div class="loader"><i></i></div></div></main><script>setTimeout(()=>location.href='pages/login.html',1500)</script></body></html>
+</head>
+<body>
+  <main class="splash">
+    <div class="splash-inner index-card">
+      <div class="brand-mark">♻</div>
+      <h1 class="index-title">ReciclaDin</h1>
+      <p class="index-subtitle">Reciclagem inteligente, impacto real.</p>
+      <div id="index-actions" class="index-actions">
+        <a class="btn btn-green" href="pages/login.html">Entrar na plataforma</a>
+      </div>
+      <section class="index-admin-panel" aria-labelledby="index-admin-title">
+        <h2 id="index-admin-title">Acesso administrativo</h2>
+        <p>Área restrita a contas de administrador.</p>
+        <form id="index-admin-form">
+          <label for="index-admin-email">E-mail</label>
+          <input id="index-admin-email" class="input" type="email" required autocomplete="username" placeholder="E-mail administrativo">
+          <label for="index-admin-password">Senha</label>
+          <input id="index-admin-password" class="input" type="password" required autocomplete="current-password" placeholder="Senha">
+          <p id="index-admin-message" class="notice hidden" role="alert" aria-live="polite"></p>
+          <button id="index-admin-submit" class="btn btn-green" type="submit">Entrar como administrador</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="js/index.js?v=20261024-admin-v2"></script>
+</body>
+</html>

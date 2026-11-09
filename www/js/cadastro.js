@@ -18,6 +18,8 @@ form.addEventListener('submit',async event=>{
 
   const password=document.getElementById('password').value;
   const confirmation=document.getElementById('confirm-password').value;
+  const role=document.getElementById('role').value;
+  if(!['partner','buyer'].includes(role))return toast('Selecione um perfil válido para criar a conta.',true);
   if(!isPasswordValid(password))return toast('A senha deve atender a todos os requisitos indicados.',true);
   if(password!==confirmation)return toast('As senhas não conferem.',true);
   if(!document.getElementById('terms-check').checked)return toast('Aceite os Termos e a Política de Privacidade para continuar.',true);
@@ -31,7 +33,7 @@ form.addEventListener('submit',async event=>{
       password,
       options:{data:{
         full_name:document.getElementById('name').value.trim(),
-        role:document.getElementById('role').value,
+        role,
         accepted_terms:true
       }}
     });

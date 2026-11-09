@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Administração — ReciclaDin</title>
+  <link rel="stylesheet" href="admin.css?v=20261103-admin-mobile-nav-1">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <a class="admin-brand" href="../index.html"><span>♻</span><strong>ReciclaDin</strong></a>
+      <p class="admin-sidebar-label">ADMINISTRAÇÃO</p>
+      <nav class="admin-nav" aria-label="Navegação administrativa">
+        <button class="active" data-section="dashboard" aria-label="Visão geral" title="Visão geral"><span>⌂</span>Visão geral</button>
+        <button data-section="manual-weighing" aria-label="Cadastrar pesagem manual" title="Cadastrar pesagem manual"><span>⚖</span>Cadastrar pesagem manual</button>
+        <button data-section="people" aria-label="Compradores e parceiros" title="Compradores e parceiros"><span>◉</span>Compradores e parceiros</button>
+        <button data-section="collections" aria-label="Coletas" title="Coletas"><span>🚛</span>Coletas</button>
+        <button data-section="wallet" aria-label="Carteira Verde" title="Carteira Verde"><span>★</span>Carteira Verde</button>
+        <button data-section="materials" aria-label="Materiais" title="Materiais"><span>♻</span>Materiais</button>
+        <button data-section="benefits" aria-label="Produtos e prêmios" title="Produtos e prêmios"><span>🎁</span>Produtos e prêmios</button>
+        <button data-section="reports" aria-label="Relatórios" title="Relatórios"><span>▥</span>Relatórios</button>
+      </nav>
+      <button id="admin-logout" class="admin-logout"><span>↪</span>Sair</button>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div><span class="admin-eyebrow">CENTRAL DE OPERAÇÕES</span><h1 id="admin-page-title">Visão geral</h1></div>
+        <div class="admin-user"><span class="admin-user-icon">A</span><span><strong id="admin-user-name">Administrador</strong><small>Perfil administrativo</small></span></div>
+      </header>
+      <div class="admin-content">
+        <section id="admin-dashboard" class="admin-view active">
+          <div class="admin-hero">
+            <div><span class="admin-eyebrow">GESTÃO RECICLADIN</span><h2>Olá, <span id="admin-first-name">administrador</span>.</h2><p>Acompanhe pessoas, materiais e indicadores da operação.</p><button class="admin-primary" data-open-section="reports">Abrir relatórios <span>→</span></button></div>
+            <div class="admin-hero-mark" aria-hidden="true">♻</div>
+          </div>
+          <div class="admin-section-heading"><div><span class="admin-eyebrow">EM TEMPO REAL</span><h2>Resumo da operação</h2></div><button class="admin-secondary" id="refresh-overview">Atualizar</button></div>
+          <div class="admin-metrics">
+            <article class="admin-metric"><span>Parceiros</span><strong id="overview-partners">—</strong><small>Cadastros ativos</small></article>
+            <article class="admin-metric"><span>Compradores</span><strong id="overview-buyers">—</strong><small>Cadastros ativos</small></article>
+            <article class="admin-metric"><span>Pedidos</span><strong id="overview-orders">—</strong><small>Pedidos de materiais</small></article>
+            <article class="admin-metric"><span>Coletas</span><strong id="overview-collections">—</strong><small>Solicitações registradas</small></article>
+            <article class="admin-metric"><span>Materiais pesados</span><strong id="overview-weight">—</strong><small>Volume total em kg</small></article>
+            <article class="admin-metric"><span>Óleo coletado</span><strong id="overview-oil">—</strong><small>Volume total em litros</small></article>
+          </div>
+          <section class="admin-bento" aria-label="Monitoramento e gestão da operação">
+            <article class="admin-panel admin-live-panel">
+              <div class="admin-panel-heading"><div><span class="admin-eyebrow">MONITORAMENTO DINÂMICO</span><h3>Atividade em andamento</h3><p>Agendamentos dos parceiros e pedidos dos compradores.</p></div><div class="admin-live-state"><i></i><span id="monitor-status">Conectando...</span></div></div>
+              <div id="live-monitor" class="admin-live-list" aria-live="polite"><p class="admin-empty">Carregando coletas e pedidos...</p></div>
+            </article>
+            <article class="admin-panel admin-order-entry-panel">
+              <div class="admin-panel-heading"><div><span class="admin-eyebrow">LANÇAMENTO PARA COMPRADOR</span><h3>Registrar transação</h3><p>O comprador só poderá visualizar este lançamento na própria conta.</p></div><span class="admin-form-icon" aria-hidden="true">＋</span></div>
+              <form id="admin-order-form" class="admin-weighing-form">
+                <div class="admin-field-wide"><label for="order-buyer">Comprador</label><select class="admin-input" id="order-buyer" required><option value="">Selecione um comprador...</option></select></div>
+                <div class="admin-field-wide"><label for="order-material">Material</label><select class="admin-input" id="order-material" required><option value="">Selecione um material ativo...</option></select></div>
+                <div><label for="order-quantity">Quantidade (kg)</label><input class="admin-input" id="order-quantity" type="number" min="0.001" step="0.001" required></div>
+                <div><label for="order-price">Preço lançado por kg (R$)</label><input class="admin-input" id="order-price" type="number" min="0" step="0.01" required></div>
+                <div class="admin-payment-total"><span>Valor total lançado</span><strong id="order-total">R$ 0,00</strong></div>
+                <div><label for="order-status">Status</label><select class="admin-input" id="order-status" required><option value="concluido">Concluído</option><option value="em_andamento">Em andamento</option><option value="solicitado">Solicitado</option><option value="cancelado">Cancelado</option></select></div>
+                <button class="admin-primary admin-submit-weighing" type="submit">Registrar transação <span>→</span></button>
+              </form>
+            </article>
+            <article class="admin-panel admin-accumulation-panel">
+              <div class="admin-panel-heading"><div><span class="admin-eyebrow">DESEMPENHO ACUMULADO</span><h3>Volume reciclado</h3><p id="accumulation-caption">Peso acumulado nos últimos 30 dias.</p></div><span class="admin-chart-total" id="accumulation-total">—</span></div>
+              <div id="accumulation-chart" class="admin-accumulation-chart" role="img" aria-label="Gráfico de linha do peso reciclado acumulado"><p class="admin-empty">Calculando totais...</p></div>
+              <div class="admin-chart-axis"><span>30 dias atrás</span><span>Hoje</span></div>
+            </article>
+            <article class="admin-panel admin-operations-panel">
+              <div class="admin-panel-heading"><div><span class="admin-eyebrow">GESTÃO GERAL</span><h3>Coletas, vendas e pesagens</h3><p>Remova registros operacionais incorretos de forma segura.</p></div><button class="admin-secondary" id="refresh-operations" type="button">Atualizar lista</button></div>
+              <div class="admin-table-wrap"><table class="admin-operations-table"><thead><tr><th>Tipo</th><th>Data</th><th>Condomínio / comprador</th><th>Material</th><th>Quantidade</th><th>Valor</th><th>Status</th><th>Ação</th></tr></thead><tbody id="operations-body"><tr><td colspan="8">Carregando registros...</td></tr></tbody></table></div>
+            </article>
+          </section>
+          <div class="admin-section-heading"><div><span class="admin-eyebrow">ACESSO RÁPIDO</span><h2>Gerenciar operação</h2></div></div>
+          <div class="admin-shortcuts">
+            <button data-open-section="people"><span>◉</span><strong>Compradores e parceiros</strong><small>Listas separadas e busca por nome</small></button>
+            <button data-open-section="materials"><span>♻</span><strong>Cadastro de materiais</strong><small>Adicionar, editar e excluir do catálogo</small></button>
+            <button data-open-section="benefits"><span>🎁</span><strong>Produtos e prêmios</strong><small>Cadastrar produtos com foto e pontos</small></button>
+            <button data-open-section="reports"><span>▥</span><strong>Relatórios e gráficos</strong><small>Filtros por data e perfil com PDF</small></button>
+          </div>
+        </section>
+        <section id="admin-manual-weighing" class="admin-view">
+          <div class="admin-page-intro"><span class="admin-eyebrow">LANÇAMENTO OPERACIONAL</span><h2>Cadastrar pesagem manual</h2><p>Registre o material recebido de um condomínio ou parceiro e credite os Pontos Verdes automaticamente.</p></div>
+          <article class="admin-panel admin-manual-page-panel">
+            <div class="admin-panel-heading"><div><h3>Dados da pesagem</h3><p>Informe o parceiro, material, peso recebido e valor pago por quilo.</p></div><span class="admin-form-icon" aria-hidden="true">＋</span></div>
+            <form id="manual-weighing-form" class="admin-weighing-form">
+              <div class="admin-field-wide"><label for="manual-partner">Condomínio / parceiro</label><select class="admin-input" id="manual-partner" required><option value="">Selecione um parceiro...</option></select></div>
+              <div class="admin-field-wide"><label for="manual-material">Material</label><select class="admin-input" id="manual-material" required><option value="">Selecione um material...</option></select></div>
+              <div><label for="manual-weight">Peso recebido (kg)</label><input class="admin-input" id="manual-weight" type="number" min="0.001" step="0.001" required placeholder="0,000"></div>
+              <div><label for="manual-price">Preço pago por kg (R$)</label><input class="admin-input" id="manual-price" type="number" min="0" step="0.01" required placeholder="0,00"></div>
+              <div class="admin-payment-total"><span>Valor total calculado</span><strong id="manual-total">R$ 0,00</strong><small id="manual-points">0 Pontos Verdes · 10 por kg</small></div>
+              <button class="admin-primary admin-submit-weighing" type="submit">Cadastrar Material <span>→</span></button>
+            </form>
+          </article>
+        </section>
+        <section id="admin-people" class="admin-view">
+          <div class="admin-page-intro"><span class="admin-eyebrow">CADASTROS</span><h2>Compradores e parceiros</h2><p>Listas independentes para localizar cada perfil e acompanhar sua atividade.</p></div>
+          <div class="admin-people-grid">
+            <article class="admin-panel"><div class="admin-panel-heading"><div><h3>Parceiros</h3><p>Coletas, pesagens e status da conta</p></div><span class="admin-count" id="partner-count">0</span></div><label for="partner-search">Buscar parceiro por nome</label><input class="admin-input" id="partner-search" type="search" placeholder="Digite um nome"><div class="admin-table-wrap"><table><thead><tr><th>Nome</th><th>CPF</th><th>Coletas</th><th>Pesagens</th><th>Status da conta</th><th>Ação</th></tr></thead><tbody id="partners-body"></tbody></table></div></article>
+            <article class="admin-panel"><div class="admin-panel-heading"><div><h3>Compradores</h3><p>Pedidos e status da conta</p></div><span class="admin-count" id="buyer-count">0</span></div><label for="buyer-search">Buscar comprador por nome</label><input class="admin-input" id="buyer-search" type="search" placeholder="Digite um nome"><div class="admin-table-wrap"><table><thead><tr><th>Nome</th><th>CPF</th><th>Pedidos</th><th>Status da conta</th><th>Ação</th></tr></thead><tbody id="buyers-body"></tbody></table></div></article>
+          </div>
+        </section>
+        <section id="admin-collections" class="admin-view">
+          <div class="admin-page-intro"><span class="admin-eyebrow">OPERAÇÃO DE COLETA</span><h2>Coletas</h2><p>Solicitações de reciclagem e óleo dos parceiros, separadas das demais atividades administrativas.</p></div>
+          <article class="admin-panel">
+            <div class="admin-panel-heading"><div><h3>Solicitações recebidas</h3><p id="collection-request-count">Carregando solicitações...</p></div><button class="admin-secondary" id="refresh-collections" type="button">Atualizar lista</button></div>
+            <div class="admin-table-wrap"><table><thead><tr><th>Data solicitada</th><th>Parceiro / condomínio</th><th>Operação</th><th>Período</th><th>Quantidade estimada</th><th>Observações</th><th>Status atual</th><th>Atualizar status</th></tr></thead><tbody id="admin-collections-body"><tr><td colspan="8">Carregando solicitações...</td></tr></tbody></table></div>
+          </article>
+        </section>
+        <section id="admin-wallet" class="admin-view">
+          <div class="admin-page-intro"><span class="admin-eyebrow">PONTOS DOS PARCEIROS</span><h2>Carteira Verde</h2><p>Consulte os saldos atuais e acompanhe os kits resgatados pelos parceiros.</p></div>
+          <div class="admin-wallet-summary">
+            <article class="admin-metric"><span>Parceiros com carteira</span><strong id="wallet-partner-count">—</strong><small>Perfis parceiros cadastrados</small></article>
+            <article class="admin-metric"><span>Pontos disponíveis</span><strong id="wallet-points-total">—</strong><small>Soma dos saldos atuais</small></article>
+          </div>
+          <article class="admin-panel">
+            <div class="admin-panel-heading"><div><h3>Saldos por parceiro</h3><p>Saldo atualizado conforme pesagens e resgates.</p></div><button class="admin-secondary" id="refresh-wallet" type="button">Atualizar saldos</button></div>
+            <label for="wallet-partner-search">Buscar parceiro</label><input class="admin-input admin-wallet-search" id="wallet-partner-search" type="search" placeholder="Digite o nome do parceiro">
+            <div class="admin-table-wrap"><table><thead><tr><th>Parceiro / condomínio</th><th>Pontos disponíveis</th><th>Última atualização</th></tr></thead><tbody id="admin-wallet-body"><tr><td colspan="3">Carregando saldos...</td></tr></tbody></table></div>
+          </article>
+          <article class="admin-panel">
+            <div class="admin-panel-heading"><div><h3>Resgates recentes</h3><p>Os kits solicitados pelos parceiros aparecem aqui automaticamente.</p></div></div>
+            <div class="admin-table-wrap"><table><thead><tr><th>Data</th><th>Parceiro</th><th>Kit resgatado</th><th>Pontos usados</th><th>Status</th></tr></thead><tbody id="admin-wallet-redemptions-body" aria-live="polite"><tr><td colspan="5">Carregando resgates...</td></tr></tbody></table></div>
+          </article>
+        </section>
+        <section id="admin-profile" class="admin-view">
+          <div class="admin-page-intro admin-profile-intro">
+            <div><span class="admin-eyebrow" id="profile-kind">PERFIL DO PARCEIRO</span><h2 id="profile-name">Cliente</h2><p id="profile-description">Pesagens e valores do cliente.</p></div>
+            <div class="admin-profile-actions"><button class="admin-primary" id="profile-export-pdf" type="button">Gerar Relatório PDF <span>↓</span></button><button class="admin-secondary" id="profile-back" type="button">Voltar aos cadastros</button></div>
+          </div>
+          <article class="admin-panel admin-profile-filters">
+            <div><label for="profile-filter-year">Ano</label><select class="admin-input" id="profile-filter-year"><option value="">Todos os anos</option></select></div>
+            <div><label for="profile-filter-month">Mês</label><select class="admin-input" id="profile-filter-month" disabled><option value="">Todos os meses</option></select></div>
+            <div><label for="profile-filter-week">Semana</label><select class="admin-input" id="profile-filter-week" disabled><option value="">Todas as semanas</option></select></div>
+          </article>
+          <div class="admin-profile-metrics">
+            <article class="admin-metric"><span>Registros no período</span><strong id="profile-record-count">—</strong><small>Conforme os filtros selecionados</small></article>
+            <article class="admin-metric"><span>Peso solicitado / recebido</span><strong id="profile-total-weight">—</strong><small>Somatório dos registros filtrados</small></article>
+            <article class="admin-metric"><span id="profile-total-value-label">Valor calculado</span><strong id="profile-total-value">—</strong><small id="profile-value-note">Valores registrados nas pesagens.</small></article>
+          </div>
+          <article class="admin-panel admin-profile-records">
+            <div class="admin-panel-heading"><div><h3 id="profile-table-title">Registros</h3><p id="profile-table-description">Data, material e valores do período.</p></div></div>
+            <div class="admin-table-wrap"><table><thead><tr><th>Data</th><th>Material</th><th>Peso (kg)</th><th>Preço unitário (R$/kg)</th><th>Valor total (R$)</th><th>Ação</th></tr></thead><tbody id="profile-records-body"><tr><td colspan="6">Selecione um perfil.</td></tr></tbody></table></div>
+            <p class="admin-profile-estimate-note" id="profile-estimate-note" hidden>Os valores de compradores correspondem aos totais salvos nos lançamentos administrativos.</p>
+          </article>
+        </section>
+        <section id="admin-materials" class="admin-view">
+          <div class="admin-page-intro"><span class="admin-eyebrow">CATÁLOGO OPERACIONAL</span><h2>Materiais recicláveis</h2><p>Cadastre os materiais e os valores usados no catálogo. O volume reciclado é calculado a partir das pesagens registradas.</p></div>
+          <article class="admin-panel">
+            <div class="admin-panel-heading"><div><h3>Cadastrar material manualmente</h3><p>O novo material fica disponível para a operação após salvar.</p></div></div>
+            <form id="material-form" class="admin-material-form">
+              <div><label for="material-name">Nome do material</label><input class="admin-input" id="material-name" maxlength="100" required placeholder="Ex.: Alumínio"></div>
+              <div><label for="material-unit">Unidade</label><input class="admin-input" id="material-unit" maxlength="20" value="kg" required></div>
+              <div><label for="material-price">Valor de referência (R$)</label><input class="admin-input" id="material-price" type="number" min="0" step="0.01" required placeholder="0,00"></div>
+              <button class="admin-primary" type="submit">Adicionar material <span>+</span></button>
+            </form>
+          </article>
+          <article class="admin-panel admin-catalog-panel"><div class="admin-panel-heading"><div><h3>Materiais cadastrados</h3><p>Edite, ative ou remova materiais do catálogo.</p></div><span class="admin-count" id="material-count">0</span></div><div class="admin-table-wrap"><table><thead><tr><th>Material</th><th>Unidade</th><th>Valor de referência</th><th>Volume pesado</th><th>Status</th><th>Ações</th></tr></thead><tbody id="materials-body"></tbody></table></div></article>
+        </section>
+        <section id="admin-benefits" class="admin-view">
+          <div class="admin-page-intro"><span class="admin-eyebrow">CARTEIRA VERDE</span><h2>Produtos e prêmios</h2><p>Cadastre os itens que os parceiros podem resgatar com seus Pontos Verdes.</p></div>
+          <article class="admin-panel admin-benefit-form-panel">
+            <div class="admin-panel-heading"><div><h3>Cadastrar produto</h3><p>A foto é enviada ao bucket público produtos antes de salvar o cadastro.</p></div><span class="admin-form-icon" aria-hidden="true">＋</span></div>
+            <form id="benefit-form" class="admin-benefit-form">
+              <div><label for="benefit-name">Nome do produto</label><input class="admin-input" id="benefit-name" maxlength="100" required placeholder="Ex.: Kit de limpeza"></div>
+              <div><label for="benefit-points">Preço em Pontos Verdes</label><input class="admin-input" id="benefit-points" type="number" min="1" step="1" required placeholder="Ex.: 500"></div>
+              <div><label for="benefit-retail-value">Valor estimado de mercado (R$)</label><input class="admin-input" id="benefit-retail-value" type="number" min="0" step="0.01" placeholder="Opcional"></div>
+              <div class="admin-benefit-description"><label for="benefit-description">Descrição</label><textarea class="admin-input" id="benefit-description" maxlength="1000" rows="4" placeholder="Descreva os itens incluídos no prêmio."></textarea></div>
+              <div class="admin-benefit-image"><label for="benefit-image">Foto do produto</label><input class="admin-input" id="benefit-image" type="file" accept="image/jpeg,image/png,image/webp" required aria-describedby="benefit-image-help"><small id="benefit-image-help">JPG, PNG ou WebP; tamanho máximo de 5 MB.</small></div>
+              <div id="benefit-image-preview" class="admin-benefit-preview" hidden><img id="benefit-image-preview-img" alt="Prévia da foto selecionada"></div>
+              <button class="admin-primary admin-benefit-submit" type="submit">Cadastrar produto <span>→</span></button>
+            </form>
+          </article>
+          <article class="admin-panel admin-catalog-panel">
+            <div class="admin-panel-heading"><div><h3>Catálogo de produtos</h3><p>Ative ou pause itens sem apagar o histórico de resgates.</p></div><span class="admin-count" id="benefit-count">0</span></div>
+            <div class="admin-table-wrap"><table><thead><tr><th>Foto</th><th>Produto</th><th>Descrição</th><th>Pontos</th><th>Valor estimado</th><th>Status</th><th>Ação</th></tr></thead><tbody id="benefits-body"><tr><td colspan="7">Carregando produtos...</td></tr></tbody></table></div>
+          </article>
+        </section>
+        <section id="admin-reports" class="admin-view">
+          <div class="admin-page-intro admin-report-intro"><div><span class="admin-eyebrow">ANÁLISE OPERACIONAL</span><h2>Relatórios e gráficos</h2><p>Filtre os registros por período, comprador e parceiro. Os totais são calculados a partir dos dados do banco.</p></div><button class="admin-primary" id="export-pdf" type="button">Baixar relatório PDF <span>↓</span></button></div>
+          <article class="admin-panel admin-filters">
+            <div><label for="report-period">Período</label><select class="admin-input" id="report-period"><option value="year">Ano</option><option value="month">Mês</option><option value="day">Dia</option></select></div>
+            <div id="year-filter"><label for="report-year">Ano</label><input class="admin-input" id="report-year" type="number" min="2000" max="2100"></div>
+            <div id="month-filter" hidden><label for="report-month">Mês</label><input class="admin-input" id="report-month" type="month"></div>
+            <div id="day-filter" hidden><label for="report-day">Dia</label><input class="admin-input" id="report-day" type="date"></div>
+            <div><label for="report-buyer">Comprador</label><input class="admin-input" id="report-buyer" type="search" placeholder="Todos os compradores"></div>
+            <div><label for="report-partner">Parceiro</label><input class="admin-input" id="report-partner" type="search" placeholder="Todos os parceiros"></div>
+          </article>
+          <div class="admin-metrics admin-report-metrics">
+            <article class="admin-metric"><span>Pedidos</span><strong id="report-orders">—</strong><small>Registros no período</small></article>
+            <article class="admin-metric"><span>Coletas</span><strong id="report-collections">—</strong><small>Solicitações no período</small></article>
+            <article class="admin-metric"><span>Pesagens</span><strong id="report-weighings">—</strong><small>Registros no período</small></article>
+            <article class="admin-metric"><span>Peso reciclado</span><strong id="report-weight">—</strong><small>Volume total em kg</small></article>
+            <article class="admin-metric"><span>Óleo coletado</span><strong id="report-oil">—</strong><small>Volume total em litros</small></article>
+          </div>
+          <article class="admin-panel"><div class="admin-panel-heading"><div><h3>Atividade da operação</h3><p id="report-caption">Selecione os filtros para consultar os dados.</p></div><div class="admin-legend"><span><i class="legend-orders"></i>Pedidos</span><span><i class="legend-collections"></i>Coletas</span><span><i class="legend-weighings"></i>Pesagens</span></div></div><div id="report-chart" class="admin-chart" role="img" aria-label="Gráfico de atividade operacional"></div></article>
+          <div class="admin-people-grid admin-report-tables">
+            <article class="admin-panel"><div class="admin-panel-heading"><div><h3>Volume por material</h3><p>Calculado pelas pesagens no período.</p></div></div><div class="admin-table-wrap"><table><thead><tr><th>Material</th><th>Peso</th></tr></thead><tbody id="report-materials"></tbody></table></div></article>
+            <article class="admin-panel"><div class="admin-panel-heading"><div><h3>Detalhamento por período</h3><p id="report-row-count">0 registros</p></div></div><div class="admin-table-wrap"><table><thead><tr><th>Data</th><th>Pedidos</th><th>Coletas</th><th>Pesagens</th><th>Kg</th><th>Óleo (L)</th></tr></thead><tbody id="report-details"></tbody></table></div></article>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
+  <script src="vendor/jspdf.umd.min.js?v=20261025-individual-reports-1"></script>
+  <script type="module" src="admin.bundle.js?v=20261103-account-active-1"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login administrativo — ReciclaDin</title>
+  <link rel="stylesheet" href="../css/style.css?v=20261102-image-path-1">
+  <link rel="stylesheet" href="../css/auth-theme.css?v=20261102-auth-bento-8">
+  <meta name="theme-color" content="#000000">
+</head>
+<body class="auth-page login-page admin-login-page">
+  <main class="auth-shell login-layout">
+    <div class="login-background" aria-hidden="true">
+      <img class="is-visible" src="../admin/assets/login-cooperativa.png" alt="">
+      <img alt="">
+    </div>
+    <section class="auth-visual" aria-hidden="true">
+      <p class="login-slogan">Central<br>administrativa<br><span>ReciclaDin ♻</span></p>
+      <p class="login-intro"><strong>Área restrita</strong><br>Acesso exclusivo para administradores autorizados.</p>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-card login-card">
+        <a class="brand login-brand" href="../index.html" aria-label="ReciclaDin — início">
+          <span class="login-brand-icon" aria-hidden="true">♻</span>
+          <span>Recicla<span>Din</span><small>ACESSO ADMINISTRATIVO</small></span>
+        </a>
+        <h1>Entrar como administrador</h1>
+        <p class="subtitle">Use sua conta administrativa do ReciclaDin.</p>
+        <form id="admin-login-form">
+          <div class="form-group login-field">
+            <label class="sr-only" for="admin-email">E-mail</label>
+            <span class="field-icon" aria-hidden="true">✉</span>
+            <input id="admin-email" class="input" type="email" required autocomplete="username" placeholder="E-mail administrativo">
+          </div>
+          <div class="form-group login-field">
+            <label class="sr-only" for="admin-password">Senha</label>
+            <span class="field-icon lock-icon" aria-hidden="true">▣</span>
+            <input id="admin-password" class="input" type="password" required autocomplete="current-password" placeholder="Senha">
+          </div>
+          <p id="admin-login-message" class="notice hidden" role="alert" aria-live="polite"></p>
+          <button id="admin-login-submit" class="btn btn-primary login-submit" type="submit">Entrar no painel</button>
+        </form>
+        <p class="footer-note"><a class="link" href="login.html">Voltar ao login principal</a></p>
+      </div>
+    </section>
+  </main>
+  <span class="login-photo-caption" id="login-photo-caption">Triagem de materiais na cooperativa</span>
+  <script type="module" src="../js/login-background.js?v=20261102-login-carousel-2"></script>
+  <script type="module" src="../js/admin-login.js"></script>
+</body>
+</html>

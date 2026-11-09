@@ -1,0 +1,81 @@
+body:not([data-app-ready="true"]) .app-shell {
+  visibility: hidden;
+}
+
+.app-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  background: radial-gradient(circle at 50% 35%, #123a22, #050806 68%);
+  color: #fff;
+  font: 700 13px Inter, system-ui, sans-serif;
+}
+
+.app-transition[hidden] {
+  display: none;
+}
+
+.app-transition .brand-mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  font-size: 25px;
+}
+
+.app-transition-loader {
+  width: 124px;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #ffffff24;
+}
+
+.app-transition-loader::after {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: #27d36b;
+  content: "";
+  animation: app-transition-loading 1s ease-in-out infinite alternate;
+}
+
+.app-transition p {
+  max-width: min(420px, calc(100vw - 40px));
+  margin: 0;
+  color: #d7e8dc;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.app-transition-login {
+  color: #69e38f;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.app-shell .content > .section:not(.active) {
+  display: none !important;
+}
+
+@keyframes app-transition-loading {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(138%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-transition-loader::after {
+    animation: none;
+  }
+}

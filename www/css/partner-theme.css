@@ -1,0 +1,472 @@
+body:has(#nav [data-section="points"]) .app-shell {
+  background-color: #f4f8f5;
+  background-image: linear-gradient(135deg, rgba(248, 252, 249, .94), rgba(235, 245, 238, .86)), var(--profile-background-image, none);
+}
+
+body:has(#nav [data-section="points"]) .sidebar {
+  background: linear-gradient(180deg, #101713 0%, #07100b 100%);
+  border-right: 1px solid rgba(39, 211, 107, .18);
+  box-shadow: 12px 0 36px rgba(7, 16, 11, .08);
+}
+
+body:has(#nav [data-section="points"]) .sidebar .brand {
+  padding-bottom: 30px;
+  letter-spacing: -.03em;
+}
+
+body:has(#nav [data-section="points"]) .sidebar .brand-mark {
+  box-shadow: 0 8px 24px rgba(39, 211, 107, .24);
+}
+
+body:has(#nav [data-section="points"]) #nav {
+  gap: 7px;
+}
+
+body:has(#nav [data-section="points"]) #nav .nav-item {
+  min-height: 46px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: #c4d0c8;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+body:has(#nav [data-section="points"]) #nav .nav-item b {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .07);
+  color: #a9e9bf;
+  font-size: 16px;
+}
+
+body:has(#nav [data-section="points"]) #nav .nav-item:hover {
+  transform: translateX(2px);
+  background: rgba(255, 255, 255, .07);
+  color: #fff;
+}
+
+body:has(#nav [data-section="points"]) #nav .nav-item.active {
+  border-color: rgba(64, 220, 119, .2);
+  background: linear-gradient(100deg, rgba(39, 211, 107, .2), rgba(39, 211, 107, .08));
+  box-shadow: inset 3px 0 #27d36b;
+  color: #fff;
+}
+
+body:has(#nav [data-section="points"]) #nav .nav-item.active b {
+  background: #27d36b;
+  color: #07100b;
+}
+
+body:has(#nav [data-section="points"]) .side-bottom .nav-item {
+  border-radius: 14px;
+  color: #d0d9d3;
+}
+
+body:has(#nav [data-section="points"]) .topbar {
+  border-bottom-color: rgba(15, 159, 80, .12);
+  box-shadow: 0 5px 24px rgba(7, 16, 11, .035);
+}
+
+body:has(#nav [data-section="points"]) .topbar .title {
+  color: #111a14;
+  letter-spacing: -.025em;
+}
+
+body:has(#nav [data-section="points"]) .content {
+  padding-top: 34px;
+}
+
+body:has(#nav [data-section="points"]) .welcome h1 {
+  color: #101713;
+  letter-spacing: -.045em;
+}
+
+body:has(#nav [data-section="points"]) .card:not(.hero-card) {
+  border-color: rgba(18, 68, 38, .09);
+  border-radius: 21px;
+  box-shadow: 0 12px 32px rgba(7, 35, 17, .055);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+body:has(#nav [data-section="points"]) #section-dashboard .grid-4 > .card:hover,
+body:has(#nav [data-section="points"]) #section-dashboard .bento > .card:not(.hero-card):hover {
+  transform: translateY(-3px);
+  border-color: rgba(15, 159, 80, .22);
+  box-shadow: 0 18px 38px rgba(7, 35, 17, .09);
+}
+
+body:has(#nav [data-section="points"]) .metric-icon {
+  background: #e3f7e9;
+  color: #08793d;
+}
+
+body:has(#nav [data-section="points"]) .hero-card {
+  background: linear-gradient(125deg, #101713 0%, #0d2919 58%, #115b31 100%);
+  border: 1px solid rgba(78, 225, 128, .2);
+  border-radius: 22px;
+  box-shadow: 0 20px 42px rgba(7, 35, 17, .16);
+}
+
+body:has(#nav [data-section="points"]) .hero-card:after {
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(82, 230, 135, .16);
+  background: radial-gradient(circle, rgba(39, 211, 107, .18), transparent 68%);
+}
+
+body:has(#nav [data-section="points"]) .btn-green {
+  border: 1px solid rgba(7, 98, 46, .16);
+  border-radius: 13px;
+  background: linear-gradient(135deg, #25cb64, #13a34e);
+  box-shadow: 0 8px 18px rgba(15, 159, 80, .2);
+  color: #07100b;
+  font-weight: 800;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+body:has(#nav [data-section="points"]) .btn-green:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 22px rgba(15, 159, 80, .27);
+  filter: saturate(1.08);
+}
+
+body:has(#nav [data-section="points"]) .btn-ghost {
+  border: 1px solid rgba(15, 159, 80, .18);
+  border-radius: 12px;
+  color: #126336;
+}
+
+body:has(#nav [data-section="points"]) .input:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, .12);
+}
+
+body:has(#nav [data-section="points"]) .table tbody tr:hover {
+  background: rgba(39, 211, 107, .055);
+}
+
+body[data-role="partner"] .partner-dashboard-hidden {
+  display: none !important;
+}
+
+body:not([data-role="partner"]) .partner-dashboard-hidden,
+.partner-dashboard-metrics[hidden] {
+  display: none !important;
+}
+
+body[data-role="partner"] #section-dashboard.active {
+  display: grid;
+  gap: 18px;
+}
+
+body[data-role="partner"] .partner-dashboard-banner {
+  position: relative;
+  display: flex;
+  min-height: 205px;
+  align-items: center;
+  overflow: hidden;
+  padding: 30px 34px;
+  border: 1px solid rgba(79, 227, 127, .2);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 77% 40%, rgba(42, 211, 100, .28), transparent 36%),
+    linear-gradient(110deg, #07130c 0%, #103a20 62%, #176c37 100%);
+  box-shadow: 0 18px 38px rgba(7, 35, 17, .15);
+  color: #fff;
+}
+
+body[data-role="partner"] .partner-dashboard-banner-copy {
+  position: relative;
+  z-index: 2;
+  width: min(62%, 560px);
+}
+
+body[data-role="partner"] .partner-dashboard-banner .partner-section-kicker {
+  color: #8cf0ad;
+}
+
+body[data-role="partner"] .partner-dashboard-banner h1 {
+  margin: 10px 0 8px;
+  color: #fff;
+  font: 800 clamp(27px, 3vw, 38px)/1.08 Manrope, sans-serif;
+  letter-spacing: -.045em;
+}
+
+body[data-role="partner"] .partner-dashboard-banner h1 span {
+  color: #5be88b;
+}
+
+body[data-role="partner"] .partner-dashboard-banner p {
+  max-width: 420px;
+  margin: 0 0 16px;
+  color: #d2e6d8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+body[data-role="partner"] .partner-dashboard-banner .btn-green {
+  width: auto;
+  padding: 11px 17px;
+}
+
+body[data-role="partner"] .partner-dashboard-mascot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 15% center;
+  opacity: .96;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+}
+
+body[data-role="partner"] .partner-dashboard-metrics {
+  gap: 13px;
+}
+
+body[data-role="partner"] .partner-dashboard-metrics .card {
+  min-height: 118px;
+  padding: 17px;
+}
+
+body[data-role="partner"] .partner-dashboard-metrics .metric {
+  margin: 10px 0 3px;
+  color: #142019;
+  font-size: 25px;
+}
+
+body[data-role="partner"] .partner-dashboard-lower {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr .82fr;
+  align-items: stretch;
+  gap: 14px;
+}
+
+body[data-role="partner"] .partner-dashboard-panel,
+body[data-role="partner"] .partner-dashboard-wallet {
+  min-width: 0;
+  padding: 18px;
+}
+
+body[data-role="partner"] .partner-dashboard-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+body[data-role="partner"] .partner-dashboard-panel-heading h2 {
+  margin: 0;
+  color: #16221a;
+  font: 800 15px Manrope, sans-serif;
+}
+
+body[data-role="partner"] .partner-panel-link {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: transparent;
+  color: #0f8a45;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+body[data-role="partner"] .partner-panel-link:hover {
+  background: #eaf9ef;
+}
+
+body[data-role="partner"] .partner-dashboard-panel .table {
+  font-size: 11px;
+}
+
+body[data-role="partner"] .partner-dashboard-panel .table th,
+body[data-role="partner"] .partner-dashboard-panel .table td {
+  padding: 10px 7px;
+}
+
+body[data-role="partner"] .partner-dashboard-panel .pill {
+  padding: 5px 8px;
+}
+
+body[data-role="partner"] .partner-dashboard-wallet {
+  background: linear-gradient(145deg, #e8f7eb, #f8fcf8) !important;
+}
+
+body[data-role="partner"] .partner-dashboard-wallet .metric {
+  margin: 14px 0 5px;
+  color: #125c31;
+  font-size: 27px;
+}
+
+body[data-role="partner"] .partner-dashboard-wallet .muted {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+body[data-role="partner"] .partner-dashboard-wallet .btn-green {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+body[data-role="partner"] .partner-dashboard-footer {
+  display: flex;
+  min-height: 62px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 1px solid rgba(15, 159, 80, .23);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .82);
+  color: #155f32;
+  font-size: 12px;
+}
+
+body[data-role="partner"] .partner-dashboard-footer > span:first-child {
+  color: #148144;
+  font-size: 23px;
+}
+
+body[data-role="partner"] .partner-dashboard-footer > span:last-child {
+  margin-left: auto;
+  color: #557360;
+  font-size: 11px;
+}
+
+body:has(#nav [data-section="points"]) .partner-section-kicker {
+  color: #138344;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+body[data-theme="dark"]:has(#nav [data-section="points"]) .app-shell {
+  background-color: #08100b;
+  background-image: linear-gradient(135deg, rgba(8, 16, 11, .94), rgba(12, 30, 18, .9)), var(--profile-background-image, none);
+}
+
+body[data-theme="dark"]:has(#nav [data-section="points"]) .topbar {
+  background: rgba(16, 27, 20, .94);
+}
+
+body[data-theme="dark"]:has(#nav [data-section="points"]) .topbar .title,
+body[data-theme="dark"]:has(#nav [data-section="points"]) .welcome h1 {
+  color: #f1f7f3;
+}
+
+body[data-theme="dark"]:has(#nav [data-section="points"]) .card:not(.hero-card) {
+  border-color: #26392d;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .16);
+}
+
+body[data-theme="dark"]:has(#nav [data-section="points"]) #section-dashboard .grid-4 > .card:hover,
+body[data-theme="dark"]:has(#nav [data-section="points"]) #section-dashboard .bento > .card:not(.hero-card):hover {
+  border-color: rgba(39, 211, 107, .38);
+}
+
+body[data-theme="dark"]:has(#nav [data-section="points"]) .mobile-nav {
+  border-color: rgba(39, 211, 107, .22);
+  background: rgba(8, 16, 11, .96);
+}
+
+@media (max-width: 820px) {
+  body:has(#nav [data-section="points"]) .content {
+    padding-top: 24px;
+  }
+
+  body:has(#nav [data-section="points"]) .mobile-nav {
+    border: 1px solid rgba(39, 211, 107, .2);
+    background: rgba(8, 16, 11, .96);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, .25);
+  }
+
+  body:has(#nav [data-section="points"]) .mobile-nav button.active {
+    border-radius: 13px;
+    background: rgba(39, 211, 107, .13);
+    color: #5be88b;
+  }
+
+  body:has(#nav [data-section="points"]) .mobile-nav button b {
+    font-size: 16px;
+  }
+
+  body[data-role="partner"] #section-dashboard {
+    gap: 15px;
+  }
+
+  body[data-role="partner"] .partner-dashboard-banner {
+    min-height: 190px;
+    padding: 24px;
+  }
+
+  body[data-role="partner"] .partner-dashboard-mascot {
+    width: 40%;
+    opacity: .72;
+  }
+
+  body[data-role="partner"] .partner-dashboard-banner-copy {
+    width: 72%;
+  }
+
+  body[data-role="partner"] .partner-dashboard-lower {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-role="partner"] .partner-dashboard-wallet {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 540px) {
+  body[data-role="partner"] .partner-dashboard-banner {
+    min-height: 220px;
+    padding: 20px;
+  }
+
+  body[data-role="partner"] .partner-dashboard-banner-copy {
+    width: 100%;
+  }
+
+  body[data-role="partner"] .partner-dashboard-mascot {
+    right: -19%;
+    width: 68%;
+    opacity: .27;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 46%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 46%);
+  }
+
+  body[data-role="partner"] .partner-dashboard-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-role="partner"] .partner-dashboard-lower {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-role="partner"] .partner-dashboard-wallet {
+    grid-column: auto;
+  }
+
+  body[data-role="partner"] .partner-dashboard-footer {
+    flex-wrap: wrap;
+  }
+
+  body[data-role="partner"] .partner-dashboard-footer > span:last-child {
+    width: 100%;
+    margin-left: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(#nav [data-section="points"]) #nav .nav-item,
+  body:has(#nav [data-section="points"]) .card:not(.hero-card),
+  body:has(#nav [data-section="points"]) .btn-green {
+    transition: none;
+  }
+}

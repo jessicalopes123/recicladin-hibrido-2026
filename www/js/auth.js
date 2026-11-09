@@ -35,6 +35,17 @@ function setMode(login){
  subtitle.textContent=login?'Acesse sua plataforma de reciclagem.':'Cadastre seu perfil para começar a usar o ReciclaDin.';
  submit.textContent=login?'Entrar':'Criar conta'; recovery.classList.toggle('hidden',!login);
 }
+async function redirectToUserDashboard(userId){
+ const {data:profile,error}=await supabase.from('profiles').select('role,is_active').eq('id',userId).maybeSingle();
+ if(error)throw error;
+ if(profile?.is_active===false){
+  const {error:signOutError}=await supabase.auth.signOut();
+  if(signOutError)throw signOutError;
+  location.replace('login.html?account=inactive');
+  return;
+ }
+ location.href=profile?.role==='admin'?'../admin/index.html':'app.html';
+}
 modeLogin?.addEventListener('click',()=>setMode(true)); modeSignup?.addEventListener('click',()=>setMode(false));
 togglePassword?.addEventListener('click',()=>{password.type=password.type==='password'?'text':'password';togglePassword.textContent=password.type==='password'?'◉':'◉̸'});
 
@@ -52,10 +63,10 @@ form?.addEventListener('submit',async e=>{
    const {data,error}=await supabase.auth.signUp({email,password:pwd,options:{data:{full_name:nameField.value.trim(),role:roleField.value,accepted_terms:true}}});
    if(error)throw error;
    toast(data.session?'Cadastro realizado!':'Cadastro realizado. Verifique seu e-mail para confirmar a conta.');
-   if(data.session) location.href='app.html';
+   if(data.session) await redirectToUserDashboard(data.user.id);
   }else{
    const {data,error}=await supabase.auth.signInWithPassword({email,password:pwd}); if(error)throw error;
-   location.href='app.html';
+   await redirectToUserDashboard(data.user.id);
   }
  }catch(err){toast(err.message||'Não foi possível concluir a operação.',true)}
  finally{submit.disabled=false;submit.textContent=isLogin?'Entrar':'Criar conta'}
@@ -63,3 +74,21 @@ form?.addEventListener('submit',async e=>{
 
 recovery?.addEventListener('click',()=>location.href='recuperar.html');
 document.getElementById('terms-check')?.addEventListener('change',e=>{submit.disabled=!e.target.checked});
+
+const authQuery = new URLSearchParams(location.search);
+if(authQuery.get('account')==='inactive'||authQuery.get('account')==='deactivated'){
+ const signOutFailed=authQuery.get('signout')==='failed';
+ toast(signOutFailed
+  ?'A conta foi desativada, mas a sessão não foi encerrada. Feche e abra o aplicativo novamente; fale com o administrador para reativá-la.'
+  :'Esta conta está desativada. Fale com o administrador para solicitar a reativação.',true);
+ authQuery.delete('account');
+ authQuery.delete('signout');
+}
+if(authQuery.get('password')==='updated'){
+ toast('Senha atualizada. Entre usando sua nova senha.');
+ authQuery.delete('password');
+}
+if(location.search){
+ const query=authQuery.toString();
+ history.replaceState(null,'',`${location.pathname}${query?`?${query}`:''}${location.hash}`);
+}

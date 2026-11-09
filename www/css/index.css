@@ -1,0 +1,11 @@
+.index-card{width:min(440px,calc(100% - 32px));padding:36px 0}
+.index-title{font:800 34px Manrope;margin:18px 0 5px}
+.index-subtitle{color:#bcd2c2}
+.index-actions{margin:24px auto;width:min(300px,100%)}
+.index-admin-panel{margin:28px auto 0;padding:22px;text-align:left;background:#ffffff0d;border:1px solid #ffffff24;border-radius:20px}
+.index-admin-panel h2{margin:0;color:#fff;font:800 22px Manrope}
+.index-admin-panel>p{margin:8px 0 18px;color:#bcd2c2;font-size:13px}
+.index-admin-panel label{display:block;margin:14px 0 7px;color:#dfe9e2;font-size:13px;font-weight:700}
+.index-admin-panel .input{background:#fff}
+#index-admin-submit{margin-top:18px}
+#index-admin-message{margin-top:14px}
