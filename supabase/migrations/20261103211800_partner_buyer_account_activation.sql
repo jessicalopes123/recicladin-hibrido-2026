@@ -74,23 +74,23 @@ begin
   values(v_user_id)
   on conflict(partner_id) do nothing;
 
-  select w.points_balance into v_balance
-  from public.green_wallet w
-  where w.partner_id=v_user_id
-  for update;
-  if v_balance < v_cost then
-    raise exception 'Saldo insuficiente para resgatar este benefício.';
-  end if;
+  update public.green_wallet wallet
+  set points_balance=greatest(0, wallet.points_balance-v_cost),
+      updated_at=now()
+  where wallet.partner_id=v_user_id
+    and wallet.profile_id=v_user_id
+    and wallet.points_balance>=v_cost
+  returning wallet.points_balance into v_balance;
 
-  update public.green_wallet
-  set points_balance=points_balance-v_cost, updated_at=now()
-  where partner_id=v_user_id;
+  if not found then
+    raise exception 'Saldo insuficiente ou carteira não inicializada.';
+  end if;
 
   insert into public.benefit_redemptions(partner_id,profile_id,benefit_id,points_used,benefit_value)
   values(v_user_id,v_user_id,p_benefit_id,v_cost,v_value)
   returning id into v_redemption_id;
 
-  return query select v_redemption_id, v_balance-v_cost;
+  return query select v_redemption_id, v_balance;
 end;
 $$;
 revoke all on function public.redeem_benefit(bigint) from public;

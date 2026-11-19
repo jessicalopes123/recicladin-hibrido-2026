@@ -617,14 +617,21 @@ async function loadWalletAndBenefits(){
  }else{
   benefitsList.innerHTML=(benefitsResult.data||[]).map(benefit=>{
    const benefitName=benefit.name||benefit.title||'Produto sem nome';
+   const benefitCost=Number(benefit.points_cost);
+   const validBenefitCost=Number.isFinite(benefitCost)&&benefitCost>=0;
+   const insufficientBalance=validBenefitCost&&state.walletBalance!==null&&state.walletBalance<benefitCost;
+   const balanceUnavailable=state.walletBalance===null;
+   const disabled=!validBenefitCost||balanceUnavailable||insufficientBalance;
+   const balanceMessage=insufficientBalance?'Saldo insuficiente.':balanceUnavailable?'Saldo indisponível para verificar o resgate.':!validBenefitCost?'Custo do benefício inválido.':'';
    return `
    <article class="card benefit-card">
     ${benefit.photo_url?`<img class="benefit-product-image" src="${escapeHtml(benefit.photo_url)}" alt="${escapeHtml(benefitName)}" loading="lazy">`:'<div class="benefit-product-placeholder" aria-hidden="true">🎁</div>'}
     <h3>${escapeHtml(benefitName)}</h3>
     <p class="muted">${escapeHtml(benefit.description||'Benefício disponível para resgate.')}</p>
     <div class="benefit-footer"><span class="pill">${formatPoints(benefit.points_cost)} pontos</span>
-     <button class="btn btn-green benefit-redeem" type="button" data-benefit-id="${Number(benefit.id)}" ${state.walletBalance===null||state.walletBalance<Number(benefit.points_cost)?'disabled':''}>Resgatar Kit</button>
+     <button class="btn btn-green benefit-redeem" type="button" data-benefit-id="${Number(benefit.id)}" data-benefit-cost="${validBenefitCost?benefitCost:''}" ${disabled?'disabled':''}>Resgatar Kit</button>
     </div>
+    ${balanceMessage?`<p class="notice error benefit-balance-warning" role="status" aria-live="polite">${balanceMessage}</p>`:''}
    </article>`;
   }).join('')||'<div class="empty">Nenhum benefício disponível no momento.</div>';
  }
@@ -650,6 +657,13 @@ async function loadWalletAndBenefits(){
 async function redeemBenefit(benefitId,button){
  if(state.role!=='partner')return toast('Somente parceiros podem resgatar benefícios.',true);
  if(!Number.isSafeInteger(benefitId)||benefitId<1)return toast('Benefício inválido.',true);
+ const benefitCost=Number(button.dataset.benefitCost);
+ if(!Number.isFinite(benefitCost)||benefitCost<0)return toast('Custo do benefício inválido.',true);
+ if(state.walletBalance===null)return toast('Não foi possível confirmar o saldo da carteira.',true);
+ if(state.walletBalance<benefitCost){
+  button.disabled=true;
+  return toast('Saldo insuficiente.',true);
+ }
  if(button.disabled)return;
  if(!confirm('Deseja confirmar o resgate deste benefício?'))return;
  button.disabled=true;
@@ -667,7 +681,7 @@ async function redeemBenefit(benefitId,button){
   toast(`Não foi possível resgatar o benefício: ${error.message||'erro desconhecido'}`,true);
  }finally{
   if(button.isConnected){
-   button.disabled=false;
+   button.disabled=state.walletBalance===null||state.walletBalance<benefitCost;
    button.textContent=button.dataset.originalLabel||'Resgatar Kit';
    delete button.dataset.originalLabel;
   }

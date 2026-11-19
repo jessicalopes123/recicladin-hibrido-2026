@@ -45,6 +45,10 @@ Se o cadastro de produtos apresentar `null value in column "title" of relation "
 
 Para habilitar ativação e desativação de contas existentes, execute `supabase/migrations/20261103211800_partner_buyer_account_activation.sql` no SQL Editor do Supabase. A migração adiciona o status, bloqueia contas desativadas e permite ao administrador reativá-las.
 
+Para reparar e proteger a Carteira Verde e o resgate de kits, execute `supabase/migrations/20261111013000_prevent_negative_wallet_redemptions.sql` no SQL Editor depois de `20261102180000_repair_benefit_redemption.sql`, `20261103130000_fix_benefit_redemption_profile_id.sql` e `20261103211800_partner_buyer_account_activation.sql`. Ela reconcilia saldos pelas pesagens e resgates, instala os gatilhos de pontos e carteira, garante a leitura da carteira pelo parceiro, impede valores negativos e atualiza `redeem_benefit` para validar o saldo e debitar o custo exato.
+
+Se o resgate ainda falhar com `green_wallet_points_balance_nonnegative`, execute também `supabase/migrations/20261117173500_remove_duplicate_redemption_debit_trigger.sql`. Ela remove o gatilho legado `gatilho_descontar_pontos` de `benefit_redemptions`, que debitava os pontos novamente embora `redeem_benefit` já faça o débito.
+
 ## 3. Auth
 Em Authentication, configure Email. Se quiser Google, configure o provider Google e as URLs de redirecionamento do projeto.
 
